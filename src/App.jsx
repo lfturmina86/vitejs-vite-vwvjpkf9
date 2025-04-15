@@ -168,8 +168,8 @@ function Produto() {
   const codigo = produto["ITEM"];
   const imagem1 = `/imagens/${codigo}-1.jpg`;
   const imagem2 = `/imagens/${codigo}-2.jpg`;
-  const imagem3 = `/imagens/${codigo}-3.jpg`;,
-  const imagem4 = `/imagens/${codigo}-4.jpg`;
+  const imagem3 = `/imagens/${codigo}-3.jpg`;
+  const imagem4 = `/imagens/${codigo}-4.jpg`;,
 
   return (
     <div className="min-h-screen bg-gray-50 p-6 max-w-xl mx-auto">
