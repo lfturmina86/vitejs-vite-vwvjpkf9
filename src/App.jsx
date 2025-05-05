@@ -125,18 +125,27 @@ function Category() {
         className="mb-6 px-4 py-2 border rounded-lg shadow-sm w-full max-w-md"
       />
 
-      {produtosFiltrados.length > 0 ? (
-        <div className="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-6">
-          {produtosFiltrados.map((item, index) => (
-            <Link
-              to={`/categoria/${nome}/produto/${index}`}
-              key={index}
-              className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-transform"
-            >
-              <h2 className="text-xl font-semibold mb-2">{item["PRODUTO"]}</h2>
-              <p><strong>Código:</strong> {item["ITEM"]}</p>
-            </Link>
-          ))}
+      {produtosFiltrados.map((item, index) => {
+  const codigo = item["ITEM"];
+  const imagem = `/imagens/${codigo}-1.jpg`;
+
+  return (
+    <Link
+      to={`/categoria/${nome}/produto/${index}`}
+      key={index}
+      className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-transform flex flex-col items-center text-center"
+    >
+      <img
+        src={imagem}
+        alt={`Imagem de ${item["PRODUTO"]}`}
+        className="w-full h-48 object-cover rounded-md mb-3"
+        onError={(e) => { e.target.style.display = 'none'; }}
+      />
+      <h2 className="text-xl font-semibold mb-2">{item["PRODUTO"]}</h2>
+      <p><strong>Código:</strong> {item["ITEM"]}</p>
+    </Link>
+  );
+})}
         </div>
       ) : (
         <p className="text-gray-500 mb-8">Nenhum produto encontrado.</p>
