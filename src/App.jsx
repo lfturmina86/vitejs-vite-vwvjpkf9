@@ -21,46 +21,61 @@ function Home() {
   ];
 
   const navigate = useNavigate();
+
   const handleCategoryClick = (category) => {
     navigate(`/categoria/${encodeURIComponent(category)}`);
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-between p-4">
+    <div className="min-h-screen flex flex-col items-center bg-gray-100">
       {/* Logo */}
-      <div className="w-full flex justify-center animate-fade-in">
+      <div className="w-full flex justify-center mt-8 animate-fade-in">
         <img
           src={logo}
           alt="Matrezan"
-          className="my-6 w-[90%] sm:w-[80%] md:w-[60%] lg:w-[50%] xl:w-[40%] h-auto"
+          className="w-[90%] sm:w-[80%] md:w-[60%] lg:w-[50%] xl:w-[40%] h-auto"
         />
       </div>
 
-      {/* Categorias */}
-      <div className="flex flex-col gap-4 w-full max-w-md px-4 sm:px-8 md:px-12">
+      {/* Categorias centralizadas */}
+      <div className="flex flex-col items-center justify-center flex-1 w-full max-w-md gap-4 px-4 sm:px-8 md:px-12 mt-6">
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => handleCategoryClick(cat)}
-            className="bg-white p-4 rounded-2xl shadow-md text-center text-lg font-semibold transition-all duration-300 ease-in-out hover:bg-blue-100 hover:shadow-lg hover:scale-105 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
+            className="bg-white p-4 rounded-2xl shadow-md text-center text-lg font-semibold transition-all duration-300 ease-in-out hover:bg-blue-100 hover:shadow-lg hover:scale-105 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 w-full"
           >
             {cat}
           </button>
         ))}
       </div>
 
-      {/* Links externos */}
-      <div className="mt-10 flex gap-6 justify-center pb-6 flex-wrap sm:flex-nowrap">
-        <a href="https://matrezan.com.br" target="_blank" rel="noopener noreferrer">
-          <Globe className="w-8 h-8 text-blue-600 hover:text-blue-800 transition-transform hover:scale-110 duration-200" />
-        </a>
-        <a href="https://www.facebook.com/matrezanmoveis/" target="_blank" rel="noopener noreferrer">
-          <Facebook className="w-8 h-8 text-blue-600 hover:text-blue-800 transition-transform hover:scale-110 duration-200" />
-        </a>
-        <a href="https://www.instagram.com/matrezan.moveis/" target="_blank" rel="noopener noreferrer">
-          <Instagram className="w-8 h-8 text-pink-500 hover:text-pink-700 transition-transform hover:scale-110 duration-200" />
-        </a>
-      </div>
+      {/* Rodapé fixo com links externos */}
+      <footer className="w-full py-4 mt-8 border-t border-gray-300 bg-gray-100">
+        <div className="flex justify-center gap-6">
+          <a
+            href="https://matrezan.com.br"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Globe className="w-7 h-7 text-blue-600 hover:text-blue-800 transition-transform hover:scale-110 duration-200" />
+          </a>
+          <a
+            href="https://www.facebook.com/matrezanmoveis/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Facebook className="w-7 h-7 text-blue-600 hover:text-blue-800 transition-transform hover:scale-110 duration-200" />
+          </a>
+          <a
+            href="https://www.instagram.com/matrezan.moveis/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Instagram className="w-7 h-7 text-pink-500 hover:text-pink-700 transition-transform hover:scale-110 duration-200" />
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }
