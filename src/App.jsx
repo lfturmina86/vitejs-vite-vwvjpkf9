@@ -129,36 +129,45 @@ function Category() {
   const codigo = item["ITEM"];
   const imagem = `/imagens/${codigo}-1.jpg`;
 
-  return (
-    <Link
-      to={`/categoria/${nome}/produto/${index}`}
-      key={index}
-      className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-transform flex flex-col items-center text-center"
-    >
-      <img
-        src={imagem}
-        alt={`Imagem de ${item["PRODUTO"]}`}
-        className="w-full h-48 object-cover rounded-md mb-3"
-        onError={(e) => { e.target.style.display = 'none'; }}
-      />
-      <h2 className="text-xl font-semibold mb-2">{item["PRODUTO"]}</h2>
-      <p><strong>Código:</strong> {item["ITEM"]}</p>
-    </Link>
-  );
-})}
-        </div>
-      ) : (
-        <p className="text-gray-500 mb-8">Nenhum produto encontrado.</p>
-      )}
+return (
+  <div className="p-6">
+    {produtosFiltrados.length > 0 ? (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {produtosFiltrados.map((item, index) => {
+          const imagem = `/imagens/${item["ITEM"]}-1.jpg`;
 
-      <button
-        onClick={() => navigate("/")}
-        className="mt-10 flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition duration-200"
-      >
-        <ArrowLeft className="w-5 h-5" /> Voltar para categorias
-      </button>
-    </div>
-  );
+          return (
+            <Link
+              to={`/categoria/${nome}/produto/${index}`}
+              key={index}
+              className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-transform flex flex-col items-center text-center"
+            >
+              <img
+                src={imagem}
+                alt={`Imagem de ${item["PRODUTO"]}`}
+                className="w-full h-48 object-cover rounded-md mb-3"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                }}
+              />
+              <h2 className="text-xl font-semibold mb-2">{item["PRODUTO"]}</h2>
+              <p><strong>Código:</strong> {item["ITEM"]}</p>
+            </Link>
+          );
+        })}
+      </div>
+    ) : (
+      <p className="text-gray-500 mb-8">Nenhum produto encontrado.</p>
+    )}
+
+    <button
+      onClick={() => navigate("/")}
+      className="mt-10 flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition duration-200"
+    >
+      <ArrowLeft className="w-5 h-5" /> Voltar para categorias
+    </button>
+  </div>
+);
 }
 
 function Produto() {
